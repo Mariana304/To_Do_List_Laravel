@@ -17,8 +17,11 @@
 </head>
 <body>
 
+    @include('layouts.partials.header')
     @yield('contect')
 
-  
+
+    
+   
 </body>
 </html>
