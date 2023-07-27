@@ -19,6 +19,7 @@
 
     @include('layouts.partials.header')
     @yield('contect')
+    
 
 
     
