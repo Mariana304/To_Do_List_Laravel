@@ -9,8 +9,29 @@ class TasksController extends Controller
     public function index()
     {
 
-      
-
         return view('tasks.index');
+    }
+
+
+    
+    public function create()
+    {
+        return view('tasks.create');
+    }
+
+
+    
+    public function show()
+    {
+
+        return view('tasks.show');
+    }
+
+
+
+    public function edit()
+    {
+
+        return view('tasks.edit');
     }
 }
