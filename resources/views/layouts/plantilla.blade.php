@@ -10,7 +10,7 @@
 
     <style>
         .active{
-            color: red;
+            color: ;
             font-weight: bold;
         }
     </style>
