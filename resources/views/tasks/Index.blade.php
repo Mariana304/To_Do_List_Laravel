@@ -5,52 +5,100 @@
 @section('contect')
 
 
-<h1>Tareas</h1>
 
-<a href="{{ route('tasks.create') }}">Nueva tarea</a>
+    <div class="container w-auto  p-9 mx-auto ">
 
+        <div class="grid justify-items-end py-2  ">
+            <div class=" mb-4 rounded-lg bg-lime-600 h-10  text-xl text-white  ">
 
+                <a href="{{ route('tasks.create') }}">
 
-<table  border="1" cellpadding="15" cellspacing="0">
+                    <p class=" flex flex-col italic  h-9 py-1 rounded-lg text-center mx-2 w-28 ">Nueva tarea</p>
 
-    <tr>
-        <th><h4>Tarea</h4></th>          
-        <th><h4>Descripcion</h4></th>
-        <th><h4>Estado</h4></th>
-        <th><h4>fecha limite</h4></th>
-    </tr>
+                </a>
 
-
-    @foreach ($task as $task)
-    <tr>
-
-        <td>{{ $task->task }} </td>
-
-        <td>{{ $task->summary }}</td>
-
-       
-        <td>{{ $task->state }}</td>
-
+            </div>
+            
+        </div>
         
-        <td>{{ $task->dead_line }} <br><br></td>
 
-        <td><a href="{{ route('tasks.show', $task) }}">ver</a> <br><br></td>
 
-        <td><form action="{{ route('tasks.destroy', $task) }}" method="POST">
-            @csrf
+        <div class=" mx-18  ">
+            <table class="text-sm w-full table-auto  text-center text-gray-500 ">
+                <thead class="text-xs w-10 text-gray-300 uppercase   bg-gray-800  ">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 ">
+                            Tarea
+                        </th>
+                        <th scope="col" class="px-6 py-3 border border-white ">
+                            Descripción
+                        </th>
+                        <th scope="col" class="px-6 py-3 border border-white">
+                            Estado
+                        </th>
+                        <th scope="col" class="px-6 py-3 border border-white ">
+                            fecha limite
+                        </th>
+                        <th scope="col" class="px-6 py-3 ">
 
-            @method('delete')
+                        </th>
+                        <th scope="col" class="px-6 py-3   ">
 
-            <button type="submit">Eliminar</button>
+                        </th>
+                    </tr>
+                </thead>
 
-        </form>
-    </td>
+                @foreach ($task as $task)
+                    <tbody>
+                        <tr class=" bg-white even:bg-slate-50 text-base  border mt-4 border-gray-300 ">
+                            <th scope="row" class="px-6 py-4 font-medium  italic text-gray-900 whitespace-nowrap ">
+                                {{ $task->task }}
+                            </th>
+                            <td class="px-6 py-4   ">
+                                {{ $task->summary }}
+                            </td>
+                            <td class="px-6 py-4 ">
+                                {{ $task->state }}
+                            </td>
+                            <td class="px-6 py-4 rounded-lg">
+                                {{ $task->dead_line }}
+                            </td>
 
-    </tr>
-    @endforeach
 
-</table>
+                            <td class="px-4 py-6 border  border-gray-300">
+
+                                <button type="submit">
+
+                                    <a href="{{ route('tasks.show', $task) }}">
+                                        <img class="w-12 h-12 mt-1 mx-6  " title="Ver"
+                                            src="{{ asset('images/eyes.jpg') }}"></a>
+                                </button>
+
+
+                            </td>
+
+                            <td class="px-6 py-4 text-md border border-gray-300">
+                                <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                                    @csrf
+
+                                    @method('delete')
+
+                                    <button type="submit">
+                                        <img class="w-14 h-12 mt-1 mx-5 " title="Eliminar"
+                                            src="{{ asset('images/trash.jpg') }}">
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                @endforeach
+
+            </table>
+
+        </div>
+
+
+    </div>
 
 
 @endsection()
-
